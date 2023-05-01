@@ -2,7 +2,7 @@
 
 Entity creation and components manipulation:
 
-```cpp=
+```cpp
 using namespace ECS;
 
 Engine engine;
@@ -25,7 +25,7 @@ Processor is used to efficiently iterate and process components data stored insi
 
 To define a processor, simply do:
 
-```cpp=
+```cpp
 class DerivedProcessor : public ECS::Processor
 {
 public:
@@ -42,7 +42,7 @@ public:
 
 To retrieve an instance (to be accurate a shared pointer), do the following (remember to also set identifier of the processor):
 
-```cpp=
+```cpp
 using namespace ECS;
 Engine engine;
 auto renderer = engine.registerProcessor<RenderSystem>();
@@ -55,7 +55,7 @@ engine.setProcessorIdentifier<RenderSystem, Sprite, Color>();
 
 Finally, to iterate and do the processor's jobs, do:
 
-```cpp=
+```cpp
 class RenderSystem : public ECS::Processor
 {
     // ...
@@ -76,14 +76,14 @@ void RenderSystem::render(RenderWindow& window)
 
 # Install
 
-If the library is built as dynamic library remember to define this macro:
-```
-ARCHETYPE_DLL
+If the library is built as dynamic library remember to define this macro (best during compilation process):
+``` cpp
+#define ARCHETYPE_DLL
 ```
 
 If the libary is meant to be built with debug modest support, define this macro when build and use the library:
-```
-ARCHETYPE_DEBUG
+```cpp
+#define ARCHETYPE_DEBUG
 ```
 
 **If that is the case, remember to link "Dbghelp" library when building the library**
