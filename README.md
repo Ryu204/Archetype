@@ -7,7 +7,7 @@ My ECS system consists of following concept:
 * **Entity:** An unique ID that is used to access data from the engine. Ideally, entity is simply an integer.
 * **Component:** A plain old datatype that has no constructor or method. Component is understood to be raw data only. Component can be accessed via entity. Every object in the game world is just some components grouped by an entity.
 * **System/Processor:** Objects that processes components to create logic of the game. Each processor is only aware of some components and works independently.
-* **Component Type:** An unique ID to mark an object type, is simple a number.
+* **Component Type:** An unique ID to mark an object type, is simply a number.
 * **Component Vector:** Contains data of a specific components. The data is packed tightly in memory and accessed by a mapping from entity to vector index.
 * **Archetype:** A set of component vectors of different types. For each set of components of an entity, an archetype is created.
 
@@ -48,7 +48,7 @@ engine.destroyEntity(entity);
 
 Processor is used to efficiently iterate and process components data associated with entity. 
 
-To define a processor, you must inherit from `ECS::Processor` with the following constructor syntax:
+To define a processor, you must inherit from `ECS::Processor` with the following constructor syntax (note that the constructor syntax is compulsory because it is used in template):
 
 ```cpp
 class DerivedProcessor : public ECS::Processor
@@ -119,5 +119,5 @@ If the libary is meant to be built with debug modest support, define this macro 
 To use the code inside your program, add this line to your source code:
 
 ```cpp
-#include "ECS/Archetype.hpp"
+#include "ECS/Engine.hpp"
 ```
